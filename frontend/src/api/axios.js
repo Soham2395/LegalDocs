@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-// Prefer build-time env (Vite), fall back to window-injected var, then localhost
-const baseURL = import.meta?.env?.VITE_API_BASE 
-  || (typeof window !== 'undefined' ? window.__API_BASE__ : undefined) 
-  || 'http://localhost:8000'
+// Use VITE_API_BASE environment variable with fallback to production URL
+const baseURL = import.meta.env.VITE_API_BASE 
 
 const api = axios.create({
   baseURL,
